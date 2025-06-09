@@ -1,0 +1,33 @@
+{
+  "file": "data/example.py",
+  "cyclomatic_complexity": [
+    "F 1:0->3 hello - 2"
+  ],
+  "maintainability_index": 100.0,
+  "raw_metrics": {
+    "loc": 5,
+    "lloc": 4,
+    "sloc": 4,
+    "comments": 0,
+    "multi": 0,
+    "blank": 1,
+    "single_comments": 0
+  },
+  "pylint": "'pylint' is not recognized as an internal or external command,\noperable program or batch file.",
+  "llm_feedback": "Gemini API error: 400 - { ... }",
+  "dev_score": 97,
+
+  "summary": "The code is simple, well-structured, and highly maintainable. However, some checks failed or were skipped due to environment setup issues.",
+  "improvement_areas": [
+    {
+      "category": "Environment",
+      "issue": "Pylint not installed or not recognized in your system.",
+      "suggestion": "Install pylint and add it to your PATH to enable static lint checks."
+    },
+    {
+      "category": "LLM Feedback",
+      "issue": "Gemini API key invalid or misconfigured.",
+      "suggestion": "Check .env and ensure GEMINI_API_KEY is a valid key from makersuite.google.com."
+    }
+  ]
+}
