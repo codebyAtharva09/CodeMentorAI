@@ -1,17 +1,25 @@
 {
-  "file": "data/program1.py",
+  "file": "data/program3.py",
   "cyclomatic_complexity": [],
-  "maintainability_index": 100.0,
+  "maintainability_index": 76.14705226402761,
   "raw_metrics": {
-    "loc": 1,
-    "lloc": 1,
-    "sloc": 1,
+    "loc": 6,
+    "lloc": 5,
+    "sloc": 5,
     "comments": 0,
     "multi": 0,
-    "blank": 0,
+    "blank": 1,
     "single_comments": 0
   },
-  "pylint": "'pylint' is not recognized as an internal or external command,\noperable program or batch file.",
+  "pylint": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\pylint.exe\\__main__.py\", line 7, in <module>\n    sys.exit(run_pylint())\n             ~~~~~~~~~~^^\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pylint\\__init__.py\", line 31, in run_pylint\n    from pylint.lint import Run as PylintRun\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pylint\\lint\\__init__.py\", line 20, in <module>\n    from pylint.lint.caching import load_results, save_results\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pylint\\lint\\caching.py\", line 7, in <module>\n    import pickle\n  File \"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pickle.py\", line 404, in <module>\n    class _Pickler:\n    ...<770 lines>...\n        dispatch[type] = save_type\nKeyboardInterrupt\n^C",
   "llm_feedback": "Gemini API error: 400 - {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key not valid. Please pass a valid API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"service\": \"generativelanguage.googleapis.com\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.LocalizedMessage\",\n        \"locale\": \"en-US\",\n        \"message\": \"API key not valid. Please pass a valid API key.\"\n      }\n    ]\n  }\n}\n",
-  "dev_score": 99
+  "dev_score": 76,
+  "summary": "The code was analyzed based on complexity, style, and maintainability. It received a DevScore of 76. Further recommendations are based on raw metrics and pylint issues.",
+  "improvement_areas": [
+    {
+      "category": "Documentation",
+      "issue": "No comments or docstrings found.",
+      "suggestion": "Add inline comments and docstrings for better clarity."
+    }
+  ]
 }

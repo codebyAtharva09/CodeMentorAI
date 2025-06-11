@@ -1,171 +1,173 @@
 import React, { useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import { uploadCodeFile, getCoachingReport } from "../api/api";
-import { toast } from "react-toastify";
 
 const Dashboard = () => {
-  const [file, setFile] = useState(null);
-  const [devScore, setDevScore] = useState(null);
-  const [report, setReport] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
-  const handleUpload = async () => {
-    if (!file) {
-      toast.error("Please select a Python (.py) file.");
-      return;
-    }
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/dashboard";
 
-    setLoading(true);
-
-    try {
-      const result = await uploadCodeFile(file);
-      setDevScore(result.dev_score);
-
-      const coaching = await getCoachingReport();
-      setReport(coaching.coaching_report);
-      toast.success("Code analyzed successfully!");
-    } catch (error) {
-      console.error("Error during upload:", error);
-      toast.error("Upload failed. Please ensure the backend is running.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const downloadReport = () => {
-    const blob = new Blob([report], { type: "text/plain;charset=utf-8" });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "coaching_report.txt";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const sidebarWidth = isCollapsed ? "60px" : "220px";
 
   return (
-    <div style={styles.container}>
-      <Sidebar />
+    <>
+      {/* Internal CSS for matching theme */}
+      <style>{`
+        .dashboard-container {
+          background: linear-gradient(to bottom right, white, #ebf8ff);
+          min-height: 100vh;
+          display: flex;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-      <main style={styles.main}>
-        <h1 style={styles.header}>Upload & Analyze Code</h1>
+        .dashboard-main {
+          flex-grow: 1;
+          transition: margin-left 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+        }
 
-        <div style={styles.uploadBox}>
-          <input
-            type="file"
-            accept=".py"
-            onChange={(e) => setFile(e.target.files[0])}
-            style={styles.input}
-          />
-          <button
-            onClick={handleUpload}
-            style={loading ? styles.buttonDisabled : styles.button}
-            disabled={loading}
-          >
-            {loading ? "Analyzing..." : "Upload & Analyze"}
-          </button>
-        </div>
+        .dashboard-header {
+          padding: 20px 30px;
+          background-color: #e6f2ff;
+          border-bottom: 1px solid #d1e0f0;
+          text-align: center;
+        }
 
-        {devScore !== null && (
-          <div style={styles.devScore}>
-            <h2>Your DevScore: {devScore}</h2>
-          </div>
-        )}
+        .dashboard-title {
+          font-size: 2rem;
+          font-weight: 800;
+          color: #1e3a8a;
+          margin: 0;
+        }
 
-        {report && (
-          <div style={styles.report}>
-            <div style={styles.reportHeader}>
-              <h2>Coaching Report</h2>
-              <button onClick={downloadReport} style={styles.downloadButton}>
-                Download .txt
-              </button>
+        .dashboard-content {
+          flex-grow: 1;
+          padding: 30px;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .welcome-card {
+          background-color: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+          max-width: 700px;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 40px;
+          border: 1px solid #cce7ff;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .welcome-card:hover {
+          transform: scale(1.02);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-title {
+          font-size: 24px;
+          font-weight: 600;
+          color: #1e3a8a;
+          margin-bottom: 16px;
+        }
+
+        .welcome-text {
+          font-size: 16px;
+          color: #4b5563;
+          margin-bottom: 24px;
+          line-height: 1.6;
+        }
+
+        .button-hover {
+          padding: 12px 24px;
+          background-color: #2563eb;
+          color: white;
+          border: none;
+          border-radius: 9999px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button-hover:hover {
+          background-color: #1d4ed8;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-footer {
+          margin-top: auto;
+          background-color: #f0f9ff;
+          color: #1e3a8a;
+          padding: 1.5rem;
+          text-align: center;
+          font-size: 0.95rem;
+          border-top: 1px solid #cbd5e1;
+        }
+
+        .dashboard-footer a {
+          color: #1d4ed8;
+          text-decoration: none;
+          margin: 0 0.25rem;
+          font-weight: 500;
+        }
+
+        .dashboard-footer a:hover {
+          text-decoration: underline;
+        }
+      `}</style>
+
+      <div className="dashboard-container">
+        <Sidebar collapsed={isCollapsed} toggleSidebar={toggleSidebar} />
+        <div className="dashboard-main" style={{ marginLeft: sidebarWidth }}>
+          <header className="dashboard-header">
+            <h1 className="dashboard-title">CodeMentorAI Dashboard</h1>
+          </header>
+
+          <main className="dashboard-content">
+            {isHome && (
+              <div className="welcome-card">
+                <h2 className="welcome-title">👋 Welcome to CodeMentorAI</h2>
+                <p className="welcome-text">
+                  Your personal AI-powered code mentor. Start by uploading your
+                  Python file to get a DevScore, review detailed analysis, and
+                  receive personalized coaching feedback with challenges.
+                </p>
+                <button
+                  className="button-hover"
+                  onClick={() => navigate("/dashboard/upload")}
+                >
+                  🚀 Upload Python File
+                </button>
+              </div>
+            )}
+            <div
+              style={{ width: "100%", maxWidth: "900px", marginBottom: "30px" }}
+            >
+              <Outlet />
             </div>
-            <pre style={styles.reportText}>{report}</pre>
-          </div>
-        )}
-      </main>
-    </div>
-  );
-};
+          </main>
 
-const styles = {
-  container: {
-    display: "flex",
-    minHeight: "100vh",
-    background: "linear-gradient(to bottom right, white, #cce7ff)",
-  },
-  main: {
-    flex: 1,
-    padding: "40px",
-  },
-  header: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    color: "#004080",
-    marginBottom: "24px",
-  },
-  uploadBox: {
-    backgroundColor: "white",
-    padding: "24px",
-    borderRadius: "12px",
-    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
-    marginBottom: "32px",
-    border: "1px solid #99ccff",
-  },
-  input: {
-    marginBottom: "16px",
-    width: "100%",
-  },
-  button: {
-    padding: "10px 20px",
-    backgroundColor: "#0066cc",
-    color: "white",
-    fontWeight: "bold",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-  buttonDisabled: {
-    padding: "10px 20px",
-    backgroundColor: "#99ccff",
-    color: "white",
-    fontWeight: "bold",
-    borderRadius: "6px",
-    cursor: "not-allowed",
-  },
-  devScore: {
-    backgroundColor: "#ccffcc",
-    padding: "16px",
-    borderRadius: "10px",
-    marginBottom: "24px",
-    border: "1px solid #66cc66",
-    color: "#006600",
-  },
-  report: {
-    backgroundColor: "white",
-    padding: "24px",
-    borderRadius: "12px",
-    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
-    border: "1px solid #ddd",
-  },
-  reportHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "16px",
-  },
-  downloadButton: {
-    fontSize: "12px",
-    backgroundColor: "#cce7ff",
-    color: "#004080",
-    padding: "6px 12px",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-  reportText: {
-    whiteSpace: "pre-wrap",
-    lineHeight: "1.5",
-    color: "#333",
-  },
+          <footer className="dashboard-footer">
+            © {new Date().getFullYear()} CodeMentorAI. Built with 💙 by
+            passionate developers.
+            <br />
+            <a href="#">Privacy Policy</a> · <a href="#">Terms</a> ·{" "}
+            <a href="#">Contact</a>
+          </footer>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Dashboard;

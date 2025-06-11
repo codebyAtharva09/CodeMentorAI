@@ -1,21 +1,45 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000"; // Make sure backend is running here
+// ✅ Backend URL (update this if deploying)
+const BASE_URL = "http://localhost:8000"; // Ensure backend is running at this address
 
+// ✅ Simulated login (placeholder)
 export const loginUser = async (username, password) => {
-  // Fake login for demo: username = testuser, password = password123
   return username === "testuser" && password === "password123";
 };
 
+// ✅ Upload code file to analyzer endpoint
 export const uploadCodeFile = async (file) => {
-  const formData = new FormData();
-  formData.append("file", file);
-  const res = await axios.post(`${BASE_URL}/analyzer/analyze`, formData);
-  return res.data;
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await axios.post(
+      `${BASE_URL}/analyzer/analyze`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("❌ Upload error:", error);
+    throw error;
+  }
 };
 
+// ✅ Fetch coaching feedback after analysis
 export const getCoachingReport = async () => {
-  const res = await axios.get(`${BASE_URL}/coach/generate`);
-  return res.data;
+  try {
+    const response = await axios.get(`${BASE_URL}/coach/generate`);
+    return response.data;
+  } catch (error) {
+    console.error("❌ Coaching fetch error:", error);
+    throw error;
+  }
 };
-console.log("loginUser loaded");
+
+console.log("✅ api.js loaded and connected to:", BASE_URL);
