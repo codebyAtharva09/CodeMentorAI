@@ -1,17 +1,17 @@
 {
-  "file": "data/program3.py",
+  "file": "data/program1.py",
   "cyclomatic_complexity": [],
-  "maintainability_index": 76.14705226402761,
+  "maintainability_index": 100.0,
   "raw_metrics": {
-    "loc": 6,
-    "lloc": 5,
-    "sloc": 5,
+    "loc": 1,
+    "lloc": 1,
+    "sloc": 1,
     "comments": 0,
     "multi": 0,
-    "blank": 1,
+    "blank": 0,
     "single_comments": 0
   },
   "pylint": "'pylint' is not recognized as an internal or external command,\noperable program or batch file.",
   "llm_feedback": "Gemini API error: 400 - {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key not valid. Please pass a valid API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com\",\n        \"metadata\": {\n          \"service\": \"generativelanguage.googleapis.com\"\n        }\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.LocalizedMessage\",\n        \"locale\": \"en-US\",\n        \"message\": \"API key not valid. Please pass a valid API key.\"\n      }\n    ]\n  }\n}\n",
-  "dev_score": 75
+  "dev_score": 99
 }
