@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 from .routes.analyzer_route import analyzer_router
 from .routes.coach_route import coach_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="CodeMentor AI API")
 

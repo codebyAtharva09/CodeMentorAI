@@ -1,15 +1,25 @@
 import json
+import os
 
 def generate_coaching_report(input_file="data/structured_code_report.json"):
+    if not os.path.exists(input_file):
+        raise FileNotFoundError("Structured report JSON not found.")
+
     with open(input_file, "r") as f:
-        report = json.load(f)
+        try:
+            report = json.load(f)
+        except json.JSONDecodeError:
+            raise ValueError("Invalid JSON content in structured_code_report.json")
+
+    if "dev_score" not in report or "improvement_areas" not in report:
+        raise KeyError("Missing required fields in the structured report.")
 
     score = report["dev_score"]
     areas = report["improvement_areas"]
 
     # Summary
-    message = f"👋 Based on your recent code analysis ({report['file']}), your DevScore is {score}/100.\n"
-    message += report["summary"] + "\n\n"
+    message = f"👋 Based on your recent code analysis ({report.get('file', 'unknown')}), your DevScore is {score}/100.\n"
+    message += report.get("summary", "No summary available.") + "\n\n"
 
     # Generate learning goals
     message += "📌 **Areas for Improvement**:\n"
@@ -36,8 +46,3 @@ def generate_coaching_report(input_file="data/structured_code_report.json"):
         message += f"- Challenge {i+1}: {c}\n"
 
     return message
-
-# Example usage
-if __name__ == "__main__":
-    report = generate_coaching_report()
-    print(report)
