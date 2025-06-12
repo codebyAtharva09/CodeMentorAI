@@ -18,124 +18,147 @@ const AnalysisPage = () => {
 
   if (!report) {
     return (
-      <div style={{ padding: "20px", textAlign: "center", color: "#777" }}>
+      <div style={{ padding: "20px", textAlign: "center", color: "#94a3b8" }}>
         ⚠️ No report data found. Please upload a file first.
       </div>
     );
   }
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>📑 Code Analysis Report</h2>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-      {/* Maintainability Index */}
-      <div style={styles.section}>
-        <h4 style={styles.label}>📏 Maintainability Index:</h4>
-        <p>
-          {report.maintainability_index !== undefined &&
-          report.maintainability_index !== null &&
-          !isNaN(report.maintainability_index)
-            ? report.maintainability_index
-            : "Not available"}
-        </p>
-      </div>
+        .analysis-container {
+          max-width: 900px;
+          margin: 40px auto;
+          padding: 30px;
+          background: linear-gradient(135deg, #0f172a, #1e293b);
+          border: 1px solid #334155;
+          border-radius: 20px;
+          box-shadow: 0 0 18px rgba(56, 189, 248, 0.15);
+          font-family: 'Poppins', sans-serif;
+          color: #e2e8f0;
+        }
 
-      {/* Raw Metrics */}
-      {report.raw_metrics && (
-        <div style={styles.section}>
-          <h4 style={styles.label}>📊 Raw Metrics:</h4>
-          <ul>
-            {Object.entries(report.raw_metrics).map(([key, value]) => (
-              <li key={key} style={styles.listItem}>
-                <strong>{key}:</strong> {value}
-              </li>
-            ))}
-          </ul>
+        .analysis-title {
+          font-size: 1.8rem;
+          color: #38bdf8;
+          margin-bottom: 30px;
+          text-align: center;
+          text-shadow: 0 0 8px #38bdf8;
+        }
+
+        .analysis-section {
+          margin-bottom: 30px;
+        }
+
+        .analysis-label {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #60a5fa;
+          margin-bottom: 12px;
+        }
+
+        .analysis-list {
+          list-style-type: disc;
+          padding-left: 20px;
+        }
+
+        .analysis-item {
+          margin-bottom: 6px;
+          color: #cbd5e1;
+        }
+
+        .code-block {
+          background: rgba(59, 130, 246, 0.08);
+          border: 1px solid rgba(59, 130, 246, 0.25);
+          padding: 16px;
+          border-radius: 12px;
+          white-space: pre-wrap;
+          color: #e0f2fe;
+          font-size: 14px;
+          font-family: "Courier New", monospace;
+          box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+        }
+
+        hr {
+          border: none;
+          border-top: 1px solid #334155;
+          margin: 40px 0;
+        }
+      `}</style>
+
+      <div className="analysis-container">
+        <h2 className="analysis-title">📑 Code Analysis Report</h2>
+
+        {/* Maintainability Index */}
+        <div className="analysis-section">
+          <h4 className="analysis-label">📏 Maintainability Index:</h4>
+          <p>{report.maintainability_index ?? "Not available"}</p>
         </div>
-      )}
 
-      {/* Cyclomatic Complexity */}
-      {report.cyclomatic_complexity && (
-        <div style={styles.section}>
-          <h4 style={styles.label}>🧠 Cyclomatic Complexity:</h4>
-          <pre style={styles.codeBlock}>
-            {report.cyclomatic_complexity.length > 0
-              ? report.cyclomatic_complexity.join("\n")
-              : "No complex blocks found."}
+        {/* Raw Metrics */}
+        {report.raw_metrics && (
+          <div className="analysis-section">
+            <h4 className="analysis-label">📊 Raw Metrics:</h4>
+            <ul className="analysis-list">
+              {Object.entries(report.raw_metrics).map(([key, value]) => (
+                <li key={key} className="analysis-item">
+                  <strong>{key}:</strong> {value}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Cyclomatic Complexity */}
+        {report.cyclomatic_complexity && (
+          <div className="analysis-section">
+            <h4 className="analysis-label">🧠 Cyclomatic Complexity:</h4>
+            <pre className="code-block">
+              {report.cyclomatic_complexity.length > 0
+                ? report.cyclomatic_complexity.join("\n")
+                : "No complex blocks found."}
+            </pre>
+          </div>
+        )}
+
+        {/* Pylint Output */}
+        <div className="analysis-section">
+          <h4 className="analysis-label">🔍 Pylint Output:</h4>
+          <pre className="code-block">
+            {report.pylint && typeof report.pylint === "string"
+              ? report.pylint
+              : "⚠️ Pylint output not available or invalid."}
           </pre>
         </div>
-      )}
 
-      {/* Pylint Output */}
-      <div style={styles.section}>
-        <h4 style={styles.label}>🔍 Pylint Output:</h4>
-        <pre style={styles.codeBlock}>
-          {report.pylint && typeof report.pylint === "string"
-            ? report.pylint
-            : "⚠️ Pylint output not available or invalid."}
-        </pre>
+        {/* LLM (Gemini) Feedback */}
+        <div className="analysis-section">
+          <h4 className="analysis-label">🤖 Gemini AI Feedback:</h4>
+          <pre className="code-block">
+            {report.llm_feedback &&
+            typeof report.llm_feedback === "string" &&
+            report.llm_feedback.trim().length > 0 &&
+            !report.llm_feedback.toLowerCase().includes("api key not valid")
+              ? report.llm_feedback
+              : "Gemini feedback unavailable. Please check your API key."}
+          </pre>
+        </div>
+
+        <hr />
+
+        {/* Coaching Feedback */}
+        <div className="analysis-section">
+          <h2 className="analysis-title">🧠 Personalized Coaching Feedback</h2>
+          <pre className="code-block">
+            {coaching || "No coaching feedback yet."}
+          </pre>
+        </div>
       </div>
-
-      {/* LLM (Gemini) Feedback */}
-      <div style={styles.section}>
-        <h4 style={styles.label}>🤖 Gemini AI Feedback:</h4>
-        <pre style={styles.codeBlock}>
-          {report.llm_feedback &&
-          typeof report.llm_feedback === "string" &&
-          report.llm_feedback.trim().length > 0 &&
-          !report.llm_feedback.toLowerCase().includes("api key not valid")
-            ? report.llm_feedback
-            : "Gemini feedback unavailable. Please check your API key."}
-        </pre>
-      </div>
-
-      <hr style={{ margin: "30px 0" }} />
-
-      {/* Coaching Feedback */}
-      <div style={styles.section}>
-        <h2 style={styles.title}>🧠 Personalized Coaching Feedback</h2>
-        <pre style={styles.codeBlock}>
-          {coaching || "No coaching feedback yet."}
-        </pre>
-      </div>
-    </div>
+    </>
   );
-};
-
-const styles = {
-  container: {
-    padding: "30px",
-    backgroundColor: "#ffffff",
-    borderRadius: "12px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.05)",
-    maxWidth: "900px",
-    margin: "0 auto",
-  },
-  title: {
-    fontSize: "24px",
-    color: "#003366",
-    marginBottom: "24px",
-  },
-  section: {
-    marginBottom: "24px",
-  },
-  label: {
-    fontSize: "18px",
-    color: "#004080",
-    marginBottom: "8px",
-  },
-  listItem: {
-    fontSize: "15px",
-    marginBottom: "4px",
-  },
-  codeBlock: {
-    backgroundColor: "#f9f9f9",
-    padding: "12px",
-    borderRadius: "6px",
-    fontSize: "14px",
-    whiteSpace: "pre-wrap",
-    border: "1px solid #ddd",
-  },
 };
 
 export default AnalysisPage;

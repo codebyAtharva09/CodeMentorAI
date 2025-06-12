@@ -11,15 +11,16 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
 
   return (
     <>
-      {/* Internal CSS for matching theme */}
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
         .sidebar-container {
           width: ${collapsed ? "60px" : "220px"};
           transition: width 0.3s ease;
-          background: linear-gradient(to bottom right, white, #ebf8ff);
+          background: linear-gradient(145deg, #0f172a, #1e293b);
+          border-right: 1px solid #334155;
+          box-shadow: 2px 0 10px rgba(0,0,0,0.4);
           min-height: 100vh;
-          border-right: 1px solid #cbd5e1;
-          box-shadow: 2px 0 6px rgba(0,0,0,0.05);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -28,26 +29,24 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
           left: 0;
           padding: 1rem 0;
           z-index: 1000;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-family: 'Poppins', sans-serif;
         }
 
         .sidebar-title-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          width: 100%;
-          padding: 12px;
+          padding: 0 1rem 1rem;
           margin-bottom: 1rem;
-          box-sizing: border-box;
           overflow: hidden;
         }
 
         .sidebar-title {
           font-size: 1.5rem;
-          font-weight: 800;
-          color: #1e3a8a;
+          font-weight: 700;
+          color: #38bdf8;
+          text-shadow: 0 0 8px #38bdf8;
           margin: 0;
-          line-height: 1;
         }
 
         .sidebar-toggle-wrapper {
@@ -57,21 +56,19 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         }
 
         .sidebar-toggle-btn {
-          background-color: #f0f4ff;
-          border: none;
+          background-color: #1e293b;
+          border: 1px solid #475569;
           border-radius: 6px;
           padding: 6px 10px;
           font-size: 16px;
-          color: #1e3a8a;
+          color: #38bdf8;
           cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background-color 0.3s ease;
+          transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .sidebar-toggle-btn:hover {
-          background-color: #dbeafe;
+          background-color: #334155;
+          transform: scale(1.05);
         }
 
         .sidebar-nav-container {
@@ -81,8 +78,9 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
           width: 100%;
         }
 
-        .sidebar-link {
-          color: #374151;
+        .sidebar-link,
+        .sidebar-icon-link {
+          color: #e2e8f0;
           font-weight: 600;
           text-decoration: none;
           margin-bottom: 1rem;
@@ -93,15 +91,15 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         }
 
         .sidebar-icon-link {
-          font-size: 1.35rem;
-          margin-bottom: 1rem;
-          text-align: center;
-          color: #2563eb;
+          font-size: 1.5rem;
           display: ${collapsed ? "block" : "none"};
+          color: #38bdf8;
         }
 
-        .sidebar-link:hover {
-          color: #1e40af;
+        .sidebar-link:hover,
+        .sidebar-icon-link:hover {
+          color: #60a5fa;
+          text-shadow: 0 0 6px #3b82f6;
         }
 
         .sidebar-logout-wrapper {
@@ -112,18 +110,17 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         }
 
         .sidebar-logout-button {
-          color: #dc2626;
+          color: #f87171;
           font-weight: 600;
           background: none;
           border: none;
           cursor: pointer;
-          text-align: center;
           font-size: ${collapsed ? "0" : "1.05rem"};
           transition: color 0.3s ease;
         }
 
         .sidebar-logout-button:hover {
-          color: #b91c1c;
+          color: #ef4444;
         }
       `}</style>
 

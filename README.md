@@ -34,6 +34,15 @@ CodeMentorAI/
 ```bash
 cd CodeMentorAI
 pip install -r requirements.txt
+py -m ensurepip --default-pip
+py -m pip install uvicorn
+py -m pip install fastapi
+.venv\Scripts\activate
+pip install uvicorn
+pip install radon
+pip install python-dotenv
+pip install python-multipart
+pip install pylint
 uvicorn backend.main:app --reload
 ```
 

@@ -33,67 +33,89 @@ const CoachingPage = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>🧠 Personalized Coaching Report</h2>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-      {loading ? (
-        <p style={styles.loading}>Loading coaching report...</p>
-      ) : (
-        <>
-          <div style={styles.reportBox}>
-            <pre style={styles.reportText}>{coachingText}</pre>
-          </div>
+        .coaching-container {
+          max-width: 900px;
+          margin: 50px auto;
+          padding: 30px;
+          background: linear-gradient(135deg, #0f172a, #1e293b);
+          border-radius: 18px;
+          box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+          font-family: 'Poppins', sans-serif;
+          color: #e2e8f0;
+          border: 1px solid #334155;
+        }
 
-          <button onClick={downloadReport} style={styles.button}>
-            ⬇️ Download as .txt
-          </button>
-        </>
-      )}
-    </div>
+        .coaching-title {
+          font-size: 1.8rem;
+          color: #38bdf8;
+          margin-bottom: 25px;
+          text-align: center;
+          text-shadow: 0 0 8px #38bdf8;
+        }
+
+        .loading {
+          font-style: italic;
+          color: #94a3b8;
+          text-align: center;
+        }
+
+        .report-box {
+          padding: 20px;
+          background: rgba(59, 130, 246, 0.08);
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          border-radius: 12px;
+          color: #e0f2fe;
+          font-size: 14px;
+          white-space: pre-wrap;
+          max-height: 400px;
+          overflow-y: auto;
+          margin-bottom: 20px;
+          box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .download-button {
+          background-color: #38bdf8;
+          color: #0f172a;
+          padding: 12px 18px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 15px;
+          transition: all 0.3s ease;
+          display: block;
+          margin: 0 auto;
+        }
+
+        .download-button:hover {
+          background-color: #0ea5e9;
+          box-shadow: 0 0 10px #38bdf8;
+        }
+      `}</style>
+
+      <div className="coaching-container">
+        <h2 className="coaching-title">🧠 Personalized Coaching Report</h2>
+
+        {loading ? (
+          <p className="loading">Loading coaching report...</p>
+        ) : (
+          <>
+            <div className="report-box">
+              <pre>{coachingText}</pre>
+            </div>
+
+            <button onClick={downloadReport} className="download-button">
+              ⬇️ Download as .txt
+            </button>
+          </>
+        )}
+      </div>
+    </>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: "800px",
-    margin: "0 auto",
-    padding: "20px",
-    backgroundColor: "#fdfdfd",
-    borderRadius: "10px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-  },
-  title: {
-    fontSize: "24px",
-    color: "#003366",
-    marginBottom: "16px",
-  },
-  loading: {
-    fontStyle: "italic",
-    color: "#555",
-  },
-  reportBox: {
-    padding: "16px",
-    border: "1px solid #ccc",
-    borderRadius: "6px",
-    backgroundColor: "#fafafa",
-    marginBottom: "16px",
-    maxHeight: "400px",
-    overflowY: "auto",
-  },
-  reportText: {
-    whiteSpace: "pre-wrap",
-    fontSize: "14px",
-    lineHeight: "1.6",
-    color: "#333",
-  },
-  button: {
-    backgroundColor: "#004080",
-    color: "white",
-    padding: "10px 16px",
-    borderRadius: "6px",
-    border: "none",
-    cursor: "pointer",
-  },
 };
 
 export default CoachingPage;

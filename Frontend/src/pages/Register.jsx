@@ -2,54 +2,80 @@ import React from "react";
 import Navbar from "../components/Navbar";
 
 const Register = () => {
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "80vh",
-    padding: "1rem",
-    background: "linear-gradient(to bottom right, white, #ebf8ff)",
-  };
-
-  const cardStyle = {
-    backgroundColor: "white",
-    boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
-    borderRadius: "1rem",
-    padding: "2rem",
-    width: "100%",
-    maxWidth: "400px",
-    textAlign: "center",
-  };
-
-  const headingStyle = {
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    color: "#1e40af", // Tailwind's blue-800
-    marginBottom: "1rem",
-  };
-
-  const textStyle = {
-    color: "#4b5563", // Tailwind's gray-600
-    marginBottom: "1rem",
-  };
-
-  const credentialStyle = {
-    fontWeight: "600",
-    color: "#1d4ed8", // Tailwind's blue-700
-  };
-
   return (
     <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        html, body {
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+          color: #f1f5f9;
+          margin: 0;
+          padding: 0;
+        }
+
+        .register-container {
+          min-height: 90vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
+        }
+
+        .register-card {
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(14px);
+          padding: 2rem;
+          border-radius: 1.25rem;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+          max-width: 400px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .register-card h2 {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #38bdf8;
+          text-shadow: 0 0 15px #38bdf8;
+          margin-bottom: 1.5rem;
+        }
+
+        .register-card p {
+          font-size: 1rem;
+          color: #cbd5e1;
+          margin-bottom: 1rem;
+        }
+
+        .register-card .credential {
+          font-weight: 600;
+          color: #60a5fa;
+        }
+
+        @media (max-width: 500px) {
+          .register-card {
+            padding: 1.5rem;
+          }
+
+          .register-card h2 {
+            font-size: 1.6rem;
+          }
+        }
+      `}</style>
+
       <Navbar />
-      <div style={containerStyle}>
-        <div style={cardStyle}>
-          <h2 style={headingStyle}>Register</h2>
-          <p style={textStyle}>
-            Registration is disabled for now. Please use the test credentials below:
+
+      <div className="register-container">
+        <div className="register-card">
+          <h2>Register</h2>
+          <p>
+            Registration is disabled for now. Please use the test credentials
+            below:
           </p>
-          <p style={credentialStyle}>Username: testuser</p>
-          <p style={credentialStyle}>Password: password123</p>
+          <p className="credential">Username: testuser</p>
+          <p className="credential">Password: password123</p>
         </div>
       </div>
     </>

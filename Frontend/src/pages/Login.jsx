@@ -20,93 +20,126 @@ const Login = () => {
 
   return (
     <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        html, body {
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+          color: #f1f5f9;
+          scroll-behavior: smooth;
+        }
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        .login-container {
+          min-height: 90vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
+        }
+
+        .login-card {
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(14px);
+          padding: 2rem;
+          border-radius: 1.25rem;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .login-card h2 {
+          font-size: 2rem;
+          font-weight: 700;
+          text-align: center;
+          color: #38bdf8;
+          text-shadow: 0 0 20px #38bdf8;
+          margin-bottom: 2rem;
+          animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonGlow {
+          0% { text-shadow: 0 0 10px #38bdf8; }
+          100% { text-shadow: 0 0 20px #38bdf8, 0 0 30px #38bdf8; }
+        }
+
+        .login-input {
+          width: 100%;
+          margin-bottom: 1rem;
+          padding: 0.75rem 1rem;
+          border-radius: 0.75rem;
+          border: 1px solid #94a3b8;
+          background: rgba(255, 255, 255, 0.1);
+          color: #f1f5f9;
+          font-size: 1rem;
+          outline: none;
+          transition: 0.3s;
+        }
+
+        .login-input:focus {
+          border-color: #38bdf8;
+          box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+        }
+
+        .login-button {
+          width: 100%;
+          padding: 0.75rem;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: 50px;
+          background: #38bdf8;
+          color: #0f172a;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .login-button:hover {
+          background: #0ea5e9;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 500px) {
+          .login-card {
+            padding: 1.5rem;
+          }
+
+          .login-card h2 {
+            font-size: 1.5rem;
+          }
+        }
+      `}</style>
+
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "80vh",
-          background: "linear-gradient(to bottom right, white, #ebf8ff)",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "white",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-            borderRadius: "1rem",
-            padding: "2rem",
-            width: "100%",
-            maxWidth: "400px",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              color: "#1e40af",
-              marginBottom: "1rem",
-            }}
-          >
-            Login
+
+      <div className="login-container">
+        <div className="login-card">
+          <h2>
+            Login to CodeMentor<span style={{ color: "#60a5fa" }}>AI</span>
           </h2>
           <input
+            className="login-input"
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            style={{
-              width: "100%",
-              marginBottom: "1rem",
-              padding: "0.5rem 1rem",
-              border: "1px solid #ccc",
-              borderRadius: "0.375rem",
-              outline: "none",
-              boxSizing: "border-box",
-            }}
-            onFocus={(e) =>
-              (e.target.style.boxShadow = "0 0 0 2px #60a5fa")
-            }
-            onBlur={(e) => (e.target.style.boxShadow = "none")}
           />
           <input
+            className="login-input"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{
-              width: "100%",
-              marginBottom: "1.5rem",
-              padding: "0.5rem 1rem",
-              border: "1px solid #ccc",
-              borderRadius: "0.375rem",
-              outline: "none",
-              boxSizing: "border-box",
-            }}
-            onFocus={(e) =>
-              (e.target.style.boxShadow = "0 0 0 2px #60a5fa")
-            }
-            onBlur={(e) => (e.target.style.boxShadow = "none")}
           />
-          <button
-            onClick={handleLogin}
-            style={{
-              width: "100%",
-              backgroundColor: "#2563eb",
-              color: "white",
-              padding: "0.5rem",
-              borderRadius: "0.375rem",
-              border: "none",
-              cursor: "pointer",
-              transition: "background-color 0.3s",
-            }}
-            onMouseEnter={(e) =>
-              (e.target.style.backgroundColor = "#1d4ed8")
-            }
-            onMouseLeave={(e) =>
-              (e.target.style.backgroundColor = "#2563eb")
-            }
-          >
+          <button className="login-button" onClick={handleLogin}>
             Login
           </button>
         </div>

@@ -27,58 +27,63 @@ const UploadPage = () => {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
         .upload-container {
-          max-width: 500px;
-          margin: 40px auto;
-          padding: 25px;
-          background: linear-gradient(to bottom right, white, #ebf8ff);
-          border-radius: 10px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-          border: 1px solid #cce7ff;
+          max-width: 520px;
+          margin: 60px auto;
+          padding: 30px;
+          background: linear-gradient(135deg, #0f172a, #1e293b);
+          border: 1px solid #334155;
+          border-radius: 20px;
+          box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
           text-align: center;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-family: 'Poppins', sans-serif;
         }
 
         .upload-title {
-          font-size: 20px;
+          font-size: 1.6rem;
           font-weight: 700;
-          color: #1e3a8a;
-          margin-bottom: 15px;
+          color: #38bdf8;
+          margin-bottom: 25px;
+          text-shadow: 0 0 6px #38bdf8;
         }
 
         .upload-input {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 15px;
-          border: 1px solid #cce7ff;
-          border-radius: 6px;
+          width: 92%;
+          padding: 12px;
+          margin-bottom: 20px;
+          background: #1e293b;
+          color: #e2e8f0;
+          border: 1px solid #475569;
+          border-radius: 10px;
           font-size: 14px;
           transition: border-color 0.3s ease;
         }
 
         .upload-input:focus {
-          border-color: #2563eb;
+          border-color: #60a5fa;
           outline: none;
         }
 
         .upload-button {
-          display: block;
           width: 100%;
-          padding: 12px;
-          background-color: #2563eb;
-          color: white;
+          padding: 14px;
+          background-color: #38bdf8;
+          color: #0f172a;
           font-size: 16px;
           font-weight: 600;
           border: none;
           border-radius: 9999px;
           cursor: pointer;
-          transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          transition: all 0.3s ease;
+          box-shadow: 0 0 10px #38bdf8;
         }
 
         .upload-button:hover {
-          background-color: #1d4ed8;
+          background-color: #0ea5e9;
+          box-shadow: 0 0 16px #0ea5e9;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
       `}</style>
 

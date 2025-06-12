@@ -14,111 +14,118 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* Internal CSS for matching theme */}
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        html, body {
+          font-family: 'Poppins', sans-serif;
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+          color: #f1f5f9;
+        }
+
         .dashboard-container {
-          background: linear-gradient(to bottom right, white, #ebf8ff);
-          min-height: 100vh;
           display: flex;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          min-height: 100vh;
         }
 
         .dashboard-main {
           flex-grow: 1;
-          transition: margin-left 0.3s ease;
           display: flex;
           flex-direction: column;
-          min-width: 0;
+          transition: margin-left 0.3s ease;
         }
 
         .dashboard-header {
-          padding: 20px 30px;
-          background-color: #e6f2ff;
-          border-bottom: 1px solid #d1e0f0;
-          text-align: center;
+          padding: 1.5rem 2rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(12px);
         }
 
         .dashboard-title {
           font-size: 2rem;
-          font-weight: 800;
-          color: #1e3a8a;
+          font-weight: 700;
+          color: #38bdf8;
+          text-shadow: 0 0 12px #38bdf8;
           margin: 0;
         }
 
         .dashboard-content {
           flex-grow: 1;
-          padding: 30px;
-          overflow-y: auto;
+          padding: 2rem;
           display: flex;
           flex-direction: column;
           align-items: center;
+          overflow-y: auto;
         }
 
         .welcome-card {
-          background-color: white;
-          padding: 30px;
-          border-radius: 12px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(16px);
+          padding: 2rem;
+          border-radius: 1rem;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+          text-align: center;
           max-width: 700px;
           width: 100%;
-          text-align: center;
-          margin-bottom: 40px;
-          border: 1px solid #cce7ff;
+          margin-bottom: 2rem;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .welcome-card:hover {
-          transform: scale(1.02);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+          transform: scale(1.015);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
         .welcome-title {
-          font-size: 24px;
+          font-size: 1.8rem;
           font-weight: 600;
-          color: #1e3a8a;
-          margin-bottom: 16px;
+          color: #60a5fa;
+          margin-bottom: 1rem;
         }
 
         .welcome-text {
-          font-size: 16px;
-          color: #4b5563;
-          margin-bottom: 24px;
+          font-size: 1rem;
+          color: #cbd5e1;
           line-height: 1.6;
+          margin-bottom: 1.5rem;
         }
 
         .button-hover {
-          padding: 12px 24px;
+          padding: 0.75rem 1.5rem;
           background-color: #2563eb;
           color: white;
+          font-weight: 600;
           border: none;
           border-radius: 9999px;
           cursor: pointer;
-          font-size: 16px;
-          font-weight: bold;
+          font-size: 1rem;
           transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .button-hover:hover {
-          background-color: #1d4ed8;
-          transform: translateY(-3px);
-          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+          background-color: #1e40af;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         .dashboard-footer {
-          margin-top: auto;
-          background-color: #f0f9ff;
-          color: #1e3a8a;
-          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.03);
+          color: #cbd5e1;
+          padding: 1.25rem;
           text-align: center;
           font-size: 0.95rem;
-          border-top: 1px solid #cbd5e1;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(10px);
         }
 
         .dashboard-footer a {
-          color: #1d4ed8;
+          color: #38bdf8;
           text-decoration: none;
           margin: 0 0.25rem;
-          font-weight: 500;
         }
 
         .dashboard-footer a:hover {
@@ -129,9 +136,12 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <Sidebar collapsed={isCollapsed} toggleSidebar={toggleSidebar} />
         <div className="dashboard-main" style={{ marginLeft: sidebarWidth }}>
-          <header className="dashboard-header">
-            <h1 className="dashboard-title">CodeMentorAI Dashboard</h1>
-          </header>
+          {/* Only show the title if on /dashboard */}
+          {isHome && (
+            <header className="dashboard-header">
+              <h1 className="dashboard-title">CodeMentorAI Dashboard</h1>
+            </header>
+          )}
 
           <main className="dashboard-content">
             {isHome && (
@@ -150,9 +160,8 @@ const Dashboard = () => {
                 </button>
               </div>
             )}
-            <div
-              style={{ width: "100%", maxWidth: "900px", marginBottom: "30px" }}
-            >
+
+            <div style={{ width: "100%", maxWidth: "900px" }}>
               <Outlet />
             </div>
           </main>
