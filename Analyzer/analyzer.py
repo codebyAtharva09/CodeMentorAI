@@ -17,7 +17,7 @@ else:
     print("✅ GEMINI_API_KEY loaded successfully.")
 
 def get_gemini_feedback(code):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
     headers = { "Content-Type": "application/json" }
     prompt = f"Analyze the following Python code and suggest improvements:\n\n{code}"
     payload = {
