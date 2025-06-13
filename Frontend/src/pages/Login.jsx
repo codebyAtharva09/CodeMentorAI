@@ -1,147 +1,246 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api/api.js";
+import { FaGoogle, FaTwitter, FaGithub } from "react-icons/fa";
 import Navbar from "../components/Navbar";
+import { loginUser } from "../api/api";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     const success = await loginUser(username, password);
     if (success) {
       localStorage.setItem("isLoggedIn", "true");
       navigate("/dashboard");
     } else {
-      alert("Invalid credentials! Use testuser / password123");
+      alert("Invalid credentials!");
     }
   };
 
   return (
     <>
+      <Navbar />
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Titillium+Web:wght@300;600&display=swap');
 
-        html, body {
-          font-family: 'Poppins', sans-serif;
-          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-          color: #f1f5f9;
-          scroll-behavior: smooth;
+        body {
+          font-family: 'Titillium Web', sans-serif;
+          background-color: #020617;
+          color: #38BDF8;
         }
 
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        .login-container {
-          min-height: 90vh;
+        .login-page {
+          min-height: 100vh;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 1rem;
-        }
-
-        .login-card {
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(14px);
+          background: radial-gradient(circle at top left, #0f172a, #020617);
           padding: 2rem;
-          border-radius: 1.25rem;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-          width: 100%;
-          max-width: 400px;
         }
 
-        .login-card h2 {
-          font-size: 2rem;
-          font-weight: 700;
+.login-box {
+  position: relative;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 0 25px rgba(46, 204, 113, 0.4), 0 0 35px rgba(52, 152, 219, 0.3);
+  background-clip: padding-box;
+}
+
+.login-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 1rem;
+  background: linear-gradient(to right, #2ecc71, #3498db);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+
+        .login-title {
           text-align: center;
-          color: #38bdf8;
-          text-shadow: 0 0 20px #38bdf8;
+          font-family: 'Orbitron', sans-serif;
+          font-size: 2rem;
+          color: #38BDF8;
           margin-bottom: 2rem;
-          animation: neonGlow 3s ease-in-out infinite alternate;
+          text-shadow: 0 0 12px rgba(59,130,246, 0.3);
         }
 
-        @keyframes neonGlow {
-          0% { text-shadow: 0 0 10px #38bdf8; }
-          100% { text-shadow: 0 0 20px #38bdf8, 0 0 30px #38bdf8; }
+        label {
+          display: block;
+          font-size: 0.875rem;
+          margin-bottom: 0.25rem;
+          color: #94A3B8;
         }
 
-        .login-input {
-          width: 100%;
-          margin-bottom: 1rem;
-          padding: 0.75rem 1rem;
-          border-radius: 0.75rem;
-          border: 1px solid #94a3b8;
-          background: rgba(255, 255, 255, 0.1);
-          color: #f1f5f9;
-          font-size: 1rem;
-          outline: none;
-          transition: 0.3s;
-        }
-
-        .login-input:focus {
-          border-color: #38bdf8;
-          box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
-        }
-
-        .login-button {
+        input {
           width: 100%;
           padding: 0.75rem;
-          font-size: 1rem;
-          font-weight: 600;
-          border-radius: 50px;
-          background: #38bdf8;
-          color: #0f172a;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+          margin-bottom: 1.2rem;
+          border-radius: 8px;
+          background-color: #0f172a;
+          border: 1px solid #1e293b;
+          color: white;
         }
 
-        .login-button:hover {
-          background: #0ea5e9;
-          transform: translateY(-2px);
+        input::placeholder {
+          color: #64748B;
         }
 
-        @media (max-width: 500px) {
-          .login-card {
-            padding: 1.5rem;
-          }
+        input:focus {
+          outline: none;
+          border-color: #38BDF8;
+          box-shadow: 0 0 0 2px rgba(56,189,248, 0.3);
+        }
 
-          .login-card h2 {
-            font-size: 1.5rem;
-          }
+        .forgot-link {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 0.8rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .forgot-link a {
+          color: #60A5FA;
+          text-decoration: none;
+        }
+
+        .forgot-link a:hover {
+          text-decoration: underline;
+        }
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #38BDF8;
+  border: none;
+  color: #020617;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, color 0.3s;
+}
+
+.login-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #2ecc71, #3498db); /* Green to Blue */
+  color: white;
+  box-shadow: 0 5px 20px rgba(56,189,248, 0.4);
+}
+
+
+        .divider {
+          display: flex;
+          align-items: center;
+          margin: 1.5rem 0;
+        }
+
+        .divider-line {
+          flex: 1;
+          height: 1px;
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .divider-text {
+          margin: 0 1rem;
+          font-size: 0.875rem;
+          color: #64748B;
+        }
+
+        .social-icons {
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .social-icons a {
+          color: #38BDF8;
+          transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-icons a:hover:nth-child(1) { color: #FF4F91; transform: scale(1.2); }
+        .social-icons a:hover:nth-child(2) { color: #1DA1F2; transform: scale(1.2); }
+        .social-icons a:hover:nth-child(3) { color: #8e44ad; transform: scale(1.2); }
+
+        .signup-text {
+          font-size: 0.875rem;
+          text-align: center;
+          color: #CBD5E1;
+        }
+
+        .signup-text a {
+          color: #3B82F6;
+          text-decoration: none;
+        }
+
+        .signup-text a:hover {
+          text-decoration: underline;
         }
       `}</style>
 
-      <Navbar />
+      <div className="login-page">
+        <div className="login-box">
+          <h2 className="login-title">Sign In</h2>
+          <form onSubmit={handleLogin}>
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className="forgot-link">
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" className="login-button">
+              Sign in
+            </button>
+          </form>
 
-      <div className="login-container">
-        <div className="login-card">
-          <h2>
-            Login to CodeMentor<span style={{ color: "#60a5fa" }}>AI</span>
-          </h2>
-          <input
-            className="login-input"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            className="login-input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button className="login-button" onClick={handleLogin}>
-            Login
-          </button>
+          <div className="divider">
+            <div className="divider-line" />
+            <span className="divider-text">or sign in with</span>
+            <div className="divider-line" />
+          </div>
+
+          <div className="social-icons">
+            <a href="#">
+              <FaGoogle />
+            </a>
+            <a href="#">
+              <FaTwitter />
+            </a>
+            <a href="#">
+              <FaGithub />
+            </a>
+          </div>
+
+          <p className="signup-text">
+            Don't have an account? <a href="/register">Sign up</a>
+          </p>
         </div>
       </div>
     </>
