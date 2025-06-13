@@ -35,26 +35,37 @@ const CoachingPage = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Titillium+Web:wght@300;600&display=swap');
+
+        body {
+          font-family: 'Titillium Web', sans-serif;
+          background: radial-gradient(circle at top left, #0f172a, #020617);
+          color: #e2e8f0;
+          margin: 0;
+          padding: 0;
+        }
 
         .coaching-container {
-          max-width: 900px;
-          margin: 50px auto;
-          padding: 30px;
-          background: linear-gradient(135deg, #0f172a, #1e293b);
-          border-radius: 18px;
-          box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
-          font-family: 'Poppins', sans-serif;
-          color: #e2e8f0;
-          border: 1px solid #334155;
+          max-width: 960px;
+          margin: 60px auto;
+          padding: 40px 32px;
+          background: rgba(15, 23, 42, 0.65);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          box-shadow: 0 0 28px rgba(56, 189, 248, 0.18);
+          backdrop-filter: blur(20px);
         }
 
         .coaching-title {
-          font-size: 1.8rem;
-          color: #38bdf8;
-          margin-bottom: 25px;
+          font-family: 'Orbitron', sans-serif;
+          font-size: 1.9rem;
+          font-weight: 700;
           text-align: center;
-          text-shadow: 0 0 8px #38bdf8;
+          background: linear-gradient(to right, #38bdf8, #60a5fa);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+          margin-bottom: 30px;
         }
 
         .loading {
@@ -65,23 +76,24 @@ const CoachingPage = () => {
 
         .report-box {
           padding: 20px;
-          background: rgba(59, 130, 246, 0.08);
+          background: rgba(59, 130, 246, 0.06);
           border: 1px solid rgba(59, 130, 246, 0.2);
-          border-radius: 12px;
+          border-radius: 14px;
           color: #e0f2fe;
           font-size: 14px;
           white-space: pre-wrap;
-          max-height: 400px;
+          max-height: 450px;
           overflow-y: auto;
-          margin-bottom: 20px;
-          box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+          box-shadow: 0 0 16px rgba(59, 130, 246, 0.12);
+          margin-bottom: 30px;
+          font-family: "Courier New", monospace;
         }
 
         .download-button {
-          background-color: #38bdf8;
+          background: linear-gradient(to right, #38bdf8, #0ea5e9);
           color: #0f172a;
-          padding: 12px 18px;
-          border-radius: 8px;
+          padding: 14px 22px;
+          border-radius: 10px;
           border: none;
           cursor: pointer;
           font-weight: 600;
@@ -89,11 +101,29 @@ const CoachingPage = () => {
           transition: all 0.3s ease;
           display: block;
           margin: 0 auto;
+          box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
         }
 
         .download-button:hover {
           background-color: #0ea5e9;
-          box-shadow: 0 0 10px #38bdf8;
+          box-shadow: 0 0 20px #38bdf8;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .coaching-container {
+            margin: 40px 16px;
+            padding: 28px 20px;
+          }
+
+          .coaching-title {
+            font-size: 1.5rem;
+          }
+
+          .download-button {
+            font-size: 14px;
+            padding: 12px 16px;
+          }
         }
       `}</style>
 

@@ -27,34 +27,46 @@ const AnalysisPage = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Titillium+Web:wght@300;600&display=swap');
+
+        body {
+          font-family: 'Titillium Web', sans-serif;
+          background: radial-gradient(circle at top left, #0f172a, #020617);
+          color: #e2e8f0;
+          margin: 0;
+          padding: 0;
+        }
 
         .analysis-container {
-          max-width: 900px;
-          margin: 40px auto;
-          padding: 30px;
-          background: linear-gradient(135deg, #0f172a, #1e293b);
-          border: 1px solid #334155;
+          max-width: 980px;
+          margin: 60px auto;
+          padding: 40px 32px;
+          background: rgba(15, 23, 42, 0.65);
           border-radius: 20px;
-          box-shadow: 0 0 18px rgba(56, 189, 248, 0.15);
-          font-family: 'Poppins', sans-serif;
-          color: #e2e8f0;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          box-shadow: 0 0 28px rgba(56, 189, 248, 0.18);
+          backdrop-filter: blur(20px);
+          font-family: 'Titillium Web', sans-serif;
         }
 
         .analysis-title {
-          font-size: 1.8rem;
-          color: #38bdf8;
-          margin-bottom: 30px;
+          font-family: 'Orbitron', sans-serif;
+          font-size: 1.9rem;
+          font-weight: 700;
           text-align: center;
-          text-shadow: 0 0 8px #38bdf8;
+          background: linear-gradient(to right, #38bdf8, #60a5fa);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+          margin-bottom: 30px;
         }
 
         .analysis-section {
-          margin-bottom: 30px;
+          margin-bottom: 40px;
         }
 
         .analysis-label {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           font-weight: 600;
           color: #60a5fa;
           margin-bottom: 12px;
@@ -62,7 +74,8 @@ const AnalysisPage = () => {
 
         .analysis-list {
           list-style-type: disc;
-          padding-left: 20px;
+          padding-left: 24px;
+          margin-top: 10px;
         }
 
         .analysis-item {
@@ -73,19 +86,30 @@ const AnalysisPage = () => {
         .code-block {
           background: rgba(59, 130, 246, 0.08);
           border: 1px solid rgba(59, 130, 246, 0.25);
-          padding: 16px;
-          border-radius: 12px;
+          padding: 18px;
+          border-radius: 14px;
           white-space: pre-wrap;
           color: #e0f2fe;
           font-size: 14px;
           font-family: "Courier New", monospace;
-          box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+          box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
         }
 
         hr {
           border: none;
           border-top: 1px solid #334155;
-          margin: 40px 0;
+          margin: 50px 0;
+        }
+
+        @media (max-width: 768px) {
+          .analysis-container {
+            margin: 40px 16px;
+            padding: 28px 20px;
+          }
+
+          .analysis-title {
+            font-size: 1.5rem;
+          }
         }
       `}</style>
 

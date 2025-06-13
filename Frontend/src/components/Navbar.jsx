@@ -5,66 +5,72 @@ const Navbar = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Titillium+Web:wght@400;600&display=swap');
 
         .navbar {
-          background: rgba(255, 255, 255, 0.08);
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          font-family: 'Titillium Web', sans-serif;
+          background: rgba(15, 23, 42, 0.6);
+          backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          padding: 16px 32px;
           position: sticky;
           top: 0;
           z-index: 1000;
-          padding: 1rem 2rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-family: 'Poppins', sans-serif;
         }
 
         .navbar-brand {
-          font-size: 1.75rem;
+          font-family: 'Orbitron', sans-serif;
+          font-size: 1.8rem;
           font-weight: 700;
-          color: #38bdf8;
           text-decoration: none;
+          color: #38bdf8;
+          text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+          letter-spacing: 1px;
         }
 
         .navbar-brand span {
           color: #60a5fa;
-          text-shadow: 0 0 8px #60a5fa;
+          text-shadow: 0 0 12px #60a5fa;
         }
 
         .navbar-links {
           display: flex;
-          gap: 1.25rem;
+          gap: 1.5rem;
         }
 
         .navbar-link {
           color: #e2e8f0;
-          text-decoration: none;
           font-weight: 500;
-          transition: color 0.3s ease, transform 0.2s ease;
+          text-decoration: none;
+          transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
         }
 
         .navbar-link:hover {
           color: #38bdf8;
           transform: translateY(-2px);
+          text-shadow: 0 0 6px #38bdf8;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
           .navbar {
             flex-direction: column;
             align-items: flex-start;
-            gap: 0.75rem;
+            padding: 16px 24px;
           }
 
           .navbar-links {
             flex-direction: column;
-            gap: 0.5rem;
             width: 100%;
+            gap: 0.75rem;
+            margin-top: 10px;
           }
 
           .navbar-link {
-            padding-left: 0.5rem;
+            padding-left: 4px;
           }
         }
       `}</style>

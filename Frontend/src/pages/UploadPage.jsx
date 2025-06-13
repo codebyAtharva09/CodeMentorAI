@@ -27,42 +27,55 @@ const UploadPage = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Titillium+Web:wght@300;600&display=swap');
+
+        body {
+          font-family: 'Titillium Web', sans-serif;
+          background: radial-gradient(ellipse at top left, #0f172a, #020617);
+          margin: 0;
+          padding: 0;
+          color: #e2e8f0;
+        }
 
         .upload-container {
           max-width: 520px;
-          margin: 60px auto;
-          padding: 30px;
-          background: linear-gradient(135deg, #0f172a, #1e293b);
-          border: 1px solid #334155;
+          margin: 80px auto;
+          padding: 36px 32px;
+          background: rgba(15, 23, 42, 0.65);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 20px;
-          box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+          box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
           text-align: center;
-          font-family: 'Poppins', sans-serif;
+          backdrop-filter: blur(18px);
         }
 
         .upload-title {
-          font-size: 1.6rem;
+          font-family: 'Orbitron', sans-serif;
+          font-size: 1.8rem;
           font-weight: 700;
-          color: #38bdf8;
+          background: linear-gradient(to right, #38bdf8, #60a5fa);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
           margin-bottom: 25px;
-          text-shadow: 0 0 6px #38bdf8;
         }
 
         .upload-input {
-          width: 92%;
+          width: 90%;
           padding: 12px;
-          margin-bottom: 20px;
-          background: #1e293b;
+          margin-bottom: 24px;
+          background: rgba(30, 41, 59, 0.9);
           color: #e2e8f0;
           border: 1px solid #475569;
           border-radius: 10px;
-          font-size: 14px;
-          transition: border-color 0.3s ease;
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 0 10px rgba(100, 116, 139, 0.2);
         }
 
         .upload-input:focus {
-          border-color: #60a5fa;
+          border-color: #7dd3fc;
+          box-shadow: 0 0 12px rgba(125, 211, 252, 0.4);
           outline: none;
         }
 
@@ -71,19 +84,26 @@ const UploadPage = () => {
           padding: 14px;
           background-color: #38bdf8;
           color: #0f172a;
-          font-size: 16px;
-          font-weight: 600;
+          font-size: 1rem;
+          font-weight: 700;
           border: none;
           border-radius: 9999px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 0 10px #38bdf8;
+          box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
         }
 
         .upload-button:hover {
           background-color: #0ea5e9;
-          box-shadow: 0 0 16px #0ea5e9;
           transform: translateY(-2px);
+          box-shadow: 0 0 18px rgba(14, 165, 233, 0.8);
+        }
+
+        @media (max-width: 600px) {
+          .upload-container {
+            margin: 40px 20px;
+            padding: 24px;
+          }
         }
       `}</style>
 
