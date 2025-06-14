@@ -158,16 +158,16 @@ const AnalysisPage = () => {
           </pre>
         </div>
 
-        {/* LLM (Gemini) Feedback */}
+        {/* LLM (Novita AI) Feedback */}
         <div className="analysis-section">
-          <h4 className="analysis-label">🤖 Gemini AI Feedback:</h4>
+          <h4 className="analysis-label">🤖 Novita AI Feedback:</h4>
           <pre className="code-block">
             {report.llm_feedback &&
             typeof report.llm_feedback === "string" &&
             report.llm_feedback.trim().length > 0 &&
             !report.llm_feedback.toLowerCase().includes("api key not valid")
               ? report.llm_feedback
-              : "Gemini feedback unavailable. Please check your API key."}
+              : "Novita AI feedback unavailable. Please check your API key."}
           </pre>
         </div>
 

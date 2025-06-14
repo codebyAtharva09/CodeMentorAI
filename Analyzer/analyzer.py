@@ -9,35 +9,46 @@ from dotenv import load_dotenv
 from .devscore import compute_devscore
 
 load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+NOVITA_API_KEY = os.getenv("NOVITA_API_KEY")
 
-if not GEMINI_API_KEY:
-    print("❌ GEMINI_API_KEY is not loaded.")
+if not NOVITA_API_KEY:
+    print("❌ NOVITA_API_KEY is not loaded.")
 else:
-    print("✅ GEMINI_API_KEY loaded successfully.")
+    print("✅ NOVITA_API_KEY loaded successfully.")
 
-def get_gemini_feedback(code):
-    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
-    headers = { "Content-Type": "application/json" }
-    prompt = f"Analyze the following Python code and suggest improvements:\n\n{code}"
-    payload = {
-        "contents": [
-            {
-                "parts": [
-                    { "text": prompt }
-                ]
-            }
-        ]
+def get_novita_feedback(code):
+    url = "https://api.novita.ai/v3/openai/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {NOVITA_API_KEY}"
     }
-
-    response = requests.post(url, headers=headers, json=payload)
-    if response.status_code == 200:
-        try:
-            return response.json()["candidates"][0]["content"]["parts"][0]["text"]
-        except Exception as e:
-            return f"Error parsing Gemini response: {e}"
-    else:
-        return f"Gemini API error: {response.status_code} - {response.text}"
+    data = {
+        "model": "meta-llama/llama-3.1-8b-instruct", # Using a common model from Novita AI documentation
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant that analyzes code and suggests improvements."
+            },
+            {
+                "role": "user",
+                "content": f"Analyze the following Python code and suggest improvements:\n\n{code}"
+            }
+        ],
+        "max_tokens": 512 # Limiting response to avoid excessive length
+    }
+    try:
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        if response.status_code == 200:
+            return response.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        return f"Error getting feedback: {e}"
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status() # Raise an exception for HTTP errors
+        if response.status_code == 200:
+            return response.json()["choices"][0]["message"]["content"]
+    except requests.exceptions.RequestException as e:
+            return f"Error getting feedback: {e}"
 
 def analyze_code(file_path):
     with open(file_path, "r") as f:
@@ -54,8 +65,8 @@ def analyze_code(file_path):
     except Exception as e:
         pylint_output = f"Error running pylint: {e}"
 
-    # Gemini feedback
-    llm_feedback = get_gemini_feedback(code)
+    # Novita AI feedback
+    llm_feedback = get_novita_feedback(code)
 
     # DevScore
     report = {

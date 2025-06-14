@@ -4,8 +4,8 @@ The code is simple, well-structured, and highly maintainable. However, some chec
 📌 **Areas for Improvement**:
 - **Environment**: Pylint not installed or not recognized in your system.
   👉 _Suggestion_: Install pylint and add it to your PATH to enable static lint checks.
-- **LLM Feedback**: Gemini API key invalid or misconfigured.
-  👉 _Suggestion_: Check .env and ensure GEMINI_API_KEY is a valid key from makersuite.google.com.
+- **LLM Feedback**: Novita AI API key invalid or misconfigured.
+  👉 _Suggestion_: Check .env and ensure NOVITA_API_KEY is a valid key from novita.ai.
 
 🎯 **Recommended Challenges**:
 - Challenge 1: Refactor a basic calculator app to improve readability and maintainability.

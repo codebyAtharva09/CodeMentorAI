@@ -1,20 +1,20 @@
 {
-  "file": "data/program3.py",
+  "file": "data/program2.py",
   "cyclomatic_complexity": [],
-  "maintainability_index": 76.14705226402761,
+  "maintainability_index": 74.55429833416675,
   "raw_metrics": {
     "loc": 6,
-    "lloc": 5,
-    "sloc": 5,
+    "lloc": 6,
+    "sloc": 6,
     "comments": 0,
     "multi": 0,
-    "blank": 1,
+    "blank": 0,
     "single_comments": 0
   },
-  "pylint": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"D:\\Projects\\CodeMentorAI\\.venv\\Scripts\\pylint.exe\\__main__.py\", line 7, in <module>\n    sys.exit(run_pylint())\n             ~~~~~~~~~~^^\n  File \"D:\\Projects\\CodeMentorAI\\.venv\\Lib\\site-packages\\pylint\\__init__.py\", line 31, in run_pylint\n    from pylint.lint import Run as PylintRun\n  File \"D:\\Projects\\CodeMentorAI\\.venv\\Lib\\site-packages\\pylint\\lint\\__init__.py\", line 20, in <module>\n    from pylint.lint.caching import load_results, save_results\n  File \"D:\\Projects\\CodeMentorAI\\.venv\\Lib\\site-packages\\pylint\\lint\\caching.py\", line 12, in <module>\n    from pylint.constants import PYLINT_HOME\n  File \"D:\\Projects\\CodeMentorAI\\.venv\\Lib\\site-packages\\pylint\\constants.py\", line 12, in <module>\n    import platformdirs\n  File \"D:\\Projects\\CodeMentorAI\\.venv\\Lib\\site-packages\\platformdirs\\__init__.py\", line 15, in <module>\n    from .version import __version__\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 1022, in exec_module\n  File \"<frozen importlib._bootstrap_external>\", line 1112, in get_code\n  File \"<frozen importlib._bootstrap_external>\", line 1235, in path_stats\n  File \"<frozen importlib._bootstrap_external>\", line 152, in _path_stat\nKeyboardInterrupt\n^C",
-  "llm_feedback": "Gemini API error: 404 - {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-pro is not found for API version v1, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n",
-  "dev_score": 76,
-  "summary": "The code was analyzed based on complexity, style, and maintainability. It received a DevScore of 76. Further recommendations are based on raw metrics and pylint issues.",
+  "pylint": "************* Module program2\ndata\\program2.py:6:0: C0304: Final newline missing (missing-final-newline)\ndata\\program2.py:1:0: C0114: Missing module docstring (missing-module-docstring)\ndata\\program2.py:3:0: W0622: Redefining built-in 'sum' (redefined-builtin)\ndata\\program2.py:5:6: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)\ndata\\program2.py:6:6: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)\n\n------------------------------------------------------------------\nYour code has been rated at 1.67/10 (previous run: 1.67/10, +0.00)\n",
+  "llm_feedback": "**Code Analysis**\n\nThe provided Python code is designed to take two numbers as input from the user, calculate their sum and product, and then print the results. Here's a breakdown of the code:\n\n1. The code uses the `input()` function to get user input, which returns a string. However, it attempts to perform mathematical operations on these string inputs, which can lead to errors.\n2. The `float()` function is used to convert the string inputs to floating-point numbers. This is not necessary and can lead to errors if the user enters a non-numeric value.\n3. The code uses the `format()` method to insert variables into a string. While this is a valid approach, it's not the most modern way to do string formatting in Python.\n4. There are no error handling mechanisms in place to handle cases where the user enters non-numeric values.\n\n**Suggestions for Improvement**\n\nHere's a revised version of the code with some improvements:\n\n```python\ndef get_number(prompt):\n    \"\"\"Get a number from the user.\"\"\"\n    while True:\n        try:\n            return float(input(prompt))\n        except ValueError:\n            print(\"That's not a valid number. Please try again.\")\n\ndef main():\n    number1 = get_number(\"Enter the first number: \")\n    number2 = get_number(\"Enter the second number: \")\n\n    sum = number1 + number2\n    multiply = number1 * number2\n\n    print(f\"The sum of {number1} and {number2} is {sum}\")\n    print(f\"The product of {number1} and {number2} is {multiply}\")\n\nif __name__ == \"__main__\":\n    main()\n```\n\n**Changes Made**\n\n1. Replaced the `input()` function with a custom `get_number()` function that attempts to convert the user's input to a float. If the input is not a valid number, it prints an error message and asks the user to try again.\n2. Removed the unnecessary `float()` conversions in the original code.\n3. Used f-strings for string formatting, which is a more modern and readable way to insert variables into strings.\n4. Added a `main()` function to encapsulate the program's logic and use the `if __name__ == \"__main__\":` guard to ensure that the `main()` function is only executed when the script is run directly.\n5. Improved code structure and organization by breaking the program into smaller, more manageable functions.\n\n**Additional Suggestions**\n\n* Consider adding a prompt to the program to",
+  "dev_score": 65,
+  "summary": "The code was analyzed based on complexity, style, and maintainability. It received a DevScore of 65. Further recommendations are based on raw metrics and pylint issues.",
   "improvement_areas": [
     {
       "category": "Documentation",
