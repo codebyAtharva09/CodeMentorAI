@@ -12,8 +12,8 @@ const DevScorePage = () => {
 
         body {
           font-family: 'Titillium Web', sans-serif;
-          background: radial-gradient(circle at top left, #0f172a, #020617);
-          color: #e2e8f0;
+          background: black;
+          color: white;
           margin: 0;
           padding: 0;
         }
@@ -22,7 +22,7 @@ const DevScorePage = () => {
           max-width: 600px;
           margin: 80px auto;
           padding: 40px 32px;
-          background: rgba(15, 23, 42, 0.65);
+          background: rgba(0, 0, 0, 0.65);
           border-radius: 20px;
           border: 1px solid rgba(255, 255, 255, 0.08);
           box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
@@ -42,13 +42,13 @@ const DevScorePage = () => {
         }
 
         .devscore-box {
-          background: rgba(59, 130, 246, 0.05);
-          border: 1px solid rgba(59, 130, 246, 0.3);
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.3);
           backdrop-filter: blur(12px);
           border-radius: 16px;
           padding: 28px;
           margin-bottom: 36px;
-          box-shadow: 0 0 16px rgba(59, 130, 246, 0.15);
+          box-shadow: 0 0 16px rgba(255, 255, 255, 0.15);
         }
 
         .score-label {
@@ -67,22 +67,21 @@ const DevScorePage = () => {
         }
 
         .analyze-button {
-          padding: 14px 30px;
-          background-color: #38bdf8;
-          color: #0f172a;
+          padding: 0.75rem 1.5rem;
+          background: linear-gradient(to right, #2ecc71, #3498db);
+          color: white;
           font-size: 1rem;
-          font-weight: 700;
+          font-weight: 600;
           border: none;
           border-radius: 9999px;
           cursor: pointer;
-          box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
           transition: all 0.3s ease;
+          box-shadow: 0 0 12px rgba(46, 204, 113, 0.3), 0 0 12px rgba(52, 152, 219, 0.3);
         }
 
         .analyze-button:hover {
-          background-color: #0ea5e9;
           transform: translateY(-2px);
-          box-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
+          box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5), 0 8px 20px rgba(52, 152, 219, 0.5);
         }
 
         @media (max-width: 600px) {

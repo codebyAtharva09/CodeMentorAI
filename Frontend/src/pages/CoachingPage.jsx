@@ -39,8 +39,8 @@ const CoachingPage = () => {
 
         body {
           font-family: 'Titillium Web', sans-serif;
-          background: radial-gradient(circle at top left, #0f172a, #020617);
-          color: #e2e8f0;
+          background: black;
+          color: white;
           margin: 0;
           padding: 0;
         }
@@ -49,7 +49,7 @@ const CoachingPage = () => {
           max-width: 960px;
           margin: 60px auto;
           padding: 40px 32px;
-          background: rgba(15, 23, 42, 0.65);
+          background: rgba(0, 0, 0, 0.65);
           border-radius: 20px;
           border: 1px solid rgba(255, 255, 255, 0.06);
           box-shadow: 0 0 28px rgba(56, 189, 248, 0.18);
@@ -70,28 +70,28 @@ const CoachingPage = () => {
 
         .loading {
           font-style: italic;
-          color: #94a3b8;
+          color: white;
           text-align: center;
         }
 
         .report-box {
           padding: 20px;
-          background: rgba(59, 130, 246, 0.06);
-          border: 1px solid rgba(59, 130, 246, 0.2);
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 14px;
-          color: #e0f2fe;
+          color: white;
           font-size: 14px;
           white-space: pre-wrap;
           max-height: 450px;
           overflow-y: auto;
-          box-shadow: 0 0 16px rgba(59, 130, 246, 0.12);
+          box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
           margin-bottom: 30px;
           font-family: "Courier New", monospace;
         }
 
         .download-button {
           background: linear-gradient(to right, #38bdf8, #0ea5e9);
-          color: #0f172a;
+          color: black;
           padding: 14px 22px;
           border-radius: 10px;
           border: none;

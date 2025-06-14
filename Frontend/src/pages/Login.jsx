@@ -28,8 +28,8 @@ const Login = () => {
 
         body {
           font-family: 'Titillium Web', sans-serif;
-          background-color: #020617;
-          color: #38BDF8;
+          background-color: black;
+          color: white;
         }
 
         .login-page {
@@ -37,13 +37,13 @@ const Login = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: radial-gradient(circle at top left, #0f172a, #020617);
+          background: black;
           padding: 2rem;
         }
 
 .login-box {
   position: relative;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
   border: 2px solid transparent;
   border-radius: 1rem;
@@ -74,7 +74,7 @@ const Login = () => {
           text-align: center;
           font-family: 'Orbitron', sans-serif;
           font-size: 2rem;
-          color: #38BDF8;
+          color: white;
           margin-bottom: 2rem;
           text-shadow: 0 0 12px rgba(59,130,246, 0.3);
         }
@@ -87,11 +87,11 @@ const Login = () => {
         }
 
         input {
-          width: 100%;
+          width: 93%;
           padding: 0.75rem;
           margin-bottom: 1.2rem;
           border-radius: 8px;
-          background-color: #0f172a;
+          background-color: #333;
           border: 1px solid #1e293b;
           color: white;
         }
@@ -127,7 +127,7 @@ const Login = () => {
   padding: 0.75rem;
   background: #38BDF8;
   border: none;
-  color: #020617;
+  color: black;
   font-weight: bold;
   font-size: 1rem;
   border-radius: 8px;

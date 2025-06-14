@@ -103,7 +103,7 @@ const LeaderboardPage = () => {
         }
 
         .stat-card {
-          background: rgba(15, 23, 42, 0.6);
+          background: rgba(0, 0, 0, 0.6);
           border: 1px solid rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(16px);
           padding: 1.5rem;
@@ -112,7 +112,7 @@ const LeaderboardPage = () => {
         }
 
         .chart-container {
-          background: rgba(15, 23, 42, 0.6);
+          background: rgba(0, 0, 0, 0.6);
           border: 1px solid rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(16px);
           padding: 2rem;
@@ -124,7 +124,7 @@ const LeaderboardPage = () => {
           display: flex;
           align-items: center;
           gap: 1rem;
-          background: rgba(15, 23, 42, 0.4);
+          background: rgba(0, 0, 0, 0.4);
           padding: 1rem;
           border-radius: 0.5rem;
           margin-bottom: 1rem;

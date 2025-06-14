@@ -17,10 +17,10 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         .sidebar-container {
           width: ${collapsed ? "64px" : "230px"};
           transition: width 0.3s ease;
-          background: linear-gradient(145deg, #0f172a, #1e293b);
+          background: black;
           backdrop-filter: blur(14px);
-          border-right: 1px solid #334155;
-          box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+          border-right: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 25px rgba(46, 204, 113, 0.4), 0 0 35px rgba(52, 152, 219, 0.3);
           min-height: 100vh;
           display: flex;
           flex-direction: column;
@@ -56,12 +56,12 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         }
 
         .sidebar-toggle-btn {
-          background-color: #1e293b;
-          border: 1px solid #475569;
+          background-color: #333;
+          border: 1px solid #555;
           border-radius: 6px;
           padding: 6px 10px;
           font-size: 14px;
-          color: #38bdf8;
+          color: white;
           cursor: pointer;
           transition: background-color 0.3s ease, transform 0.2s ease;
           min-width: 32px;
@@ -71,7 +71,7 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         }
 
         .sidebar-toggle-btn:hover {
-          background-color: #334155;
+          background-color: #555;
           transform: scale(1.05);
         }
 

@@ -31,17 +31,17 @@ const UploadPage = () => {
 
         body {
           font-family: 'Titillium Web', sans-serif;
-          background: radial-gradient(ellipse at top left, #0f172a, #020617);
+          background: black;
           margin: 0;
           padding: 0;
-          color: #e2e8f0;
+          color: white;
         }
 
         .upload-container {
           max-width: 520px;
           margin: 80px auto;
           padding: 36px 32px;
-          background: rgba(15, 23, 42, 0.65);
+          background: rgba(0, 0, 0, 0.65);
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 20px;
           box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
@@ -64,9 +64,9 @@ const UploadPage = () => {
           width: 90%;
           padding: 12px;
           margin-bottom: 24px;
-          background: rgba(30, 41, 59, 0.9);
-          color: #e2e8f0;
-          border: 1px solid #475569;
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.3);
           border-radius: 10px;
           font-size: 0.95rem;
           transition: all 0.3s ease;
@@ -74,29 +74,28 @@ const UploadPage = () => {
         }
 
         .upload-input:focus {
-          border-color: #7dd3fc;
-          box-shadow: 0 0 12px rgba(125, 211, 252, 0.4);
+          border-color: #38BDF8;
+          box-shadow: 0 0 0 2px rgba(56,189,248, 0.3);
           outline: none;
         }
 
         .upload-button {
           width: 100%;
-          padding: 14px;
-          background-color: #38bdf8;
-          color: #0f172a;
+          padding: 0.75rem 1.5rem;
+          background: linear-gradient(to right, #2ecc71, #3498db);
+          color: white;
           font-size: 1rem;
-          font-weight: 700;
+          font-weight: 600;
           border: none;
           border-radius: 9999px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+          box-shadow: 0 0 12px rgba(46, 204, 113, 0.3), 0 0 12px rgba(52, 152, 219, 0.3);
         }
 
         .upload-button:hover {
-          background-color: #0ea5e9;
           transform: translateY(-2px);
-          box-shadow: 0 0 18px rgba(14, 165, 233, 0.8);
+          box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5), 0 8px 20px rgba(52, 152, 219, 0.5);
         }
 
         @media (max-width: 600px) {

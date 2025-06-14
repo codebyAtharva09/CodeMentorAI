@@ -21,8 +21,8 @@ const Dashboard = () => {
           font-family: 'Titillium Web', sans-serif;
           margin: 0;
           padding: 0;
-          background: radial-gradient(ellipse at top left, #0f172a, #020617);
-          color: #f1f5f9;
+          background: black;
+          color: white;
         }
 
         .dashboard-container {
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
         .dashboard-header {
           padding: 1.75rem 2rem;
-          background: rgba(15, 23, 42, 0.5);
+          background: rgba(0, 0, 0, 0.5);
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(10px);
         }
@@ -65,7 +65,7 @@ const Dashboard = () => {
         }
 
         .welcome-card {
-          background: rgba(15, 23, 42, 0.6);
+          background: rgba(0, 0, 0, 0.6);
           border: 1px solid rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(16px);
           padding: 2rem;
@@ -132,7 +132,7 @@ const Dashboard = () => {
         }
 
         .feature-card {
-          background: rgba(15, 23, 42, 0.6);
+          background: rgba(0, 0, 0, 0.6);
           border: 1px solid rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(16px);
           padding: 1.5rem;
@@ -178,7 +178,7 @@ const Dashboard = () => {
         }
 
         .stat-card {
-          background: rgba(15, 23, 42, 0.7);
+          background: rgba(0, 0, 0, 0.7);
           border: 1px solid rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(16px);
           padding: 1.5rem 2.5rem;

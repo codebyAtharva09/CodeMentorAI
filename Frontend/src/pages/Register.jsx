@@ -10,9 +10,9 @@ const Register = () => {
 
         html, body {
           font-family: 'Titillium Web', sans-serif;
-          background-color: #020617;
-          background: radial-gradient(circle at top left, #0f172a, #020617);
-          color: #f1f5f9;
+          background-color: black;
+          background: black;
+          color: white;
           margin: 0;
           padding: 0;
         }
@@ -26,7 +26,7 @@ const Register = () => {
         }
 
         .register-card {
-          background: rgba(15, 23, 42, 0.6);
+          background: rgba(0, 0, 0, 0.6);
           border: 1px solid #38BDF8;
           backdrop-filter: blur(12px);
           padding: 2.5rem;

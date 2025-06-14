@@ -18,7 +18,7 @@ const AnalysisPage = () => {
 
   if (!report) {
     return (
-      <div style={{ padding: "20px", textAlign: "center", color: "#94a3b8" }}>
+      <div style={{ padding: "20px", textAlign: "center", color: "white" }}>
         ⚠️ No report data found. Please upload a file first.
       </div>
     );
@@ -31,8 +31,8 @@ const AnalysisPage = () => {
 
         body {
           font-family: 'Titillium Web', sans-serif;
-          background: radial-gradient(circle at top left, #0f172a, #020617);
-          color: #e2e8f0;
+          background: black;
+          color: white;
           margin: 0;
           padding: 0;
         }
@@ -41,10 +41,10 @@ const AnalysisPage = () => {
           max-width: 980px;
           margin: 60px auto;
           padding: 40px 32px;
-          background: rgba(15, 23, 42, 0.65);
+          background: rgba(0, 0, 0, 0.65);
           border-radius: 20px;
           border: 1px solid rgba(255, 255, 255, 0.06);
-          box-shadow: 0 0 28px rgba(56, 189, 248, 0.18);
+          box-shadow: none;
           backdrop-filter: blur(20px);
           font-family: 'Titillium Web', sans-serif;
         }
@@ -68,7 +68,7 @@ const AnalysisPage = () => {
         .analysis-label {
           font-size: 1.2rem;
           font-weight: 600;
-          color: #60a5fa;
+          color: white;
           margin-bottom: 12px;
         }
 
@@ -80,19 +80,19 @@ const AnalysisPage = () => {
 
         .analysis-item {
           margin-bottom: 6px;
-          color: #cbd5e1;
+          color: white;
         }
 
         .code-block {
-          background: rgba(59, 130, 246, 0.08);
-          border: 1px solid rgba(59, 130, 246, 0.25);
+          background: rgba(0, 0, 0, 0.6);
+          border: 2px solid transparent;
+          border-radius: 1rem;
           padding: 18px;
-          border-radius: 14px;
           white-space: pre-wrap;
-          color: #e0f2fe;
+          color: white;
           font-size: 14px;
           font-family: "Courier New", monospace;
-          box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+          box-shadow: none;
         }
 
         hr {

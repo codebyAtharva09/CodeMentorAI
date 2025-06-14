@@ -38,8 +38,8 @@ const Home = () => {
 
         body {
           font-family: 'Titillium Web', sans-serif;
-          background-color: #020617;
-          color: #38BDF8;
+          background-color: black;
+          color: white;
           overflow-x: hidden;
           animation: fadeIn 2s ease-in-out;
         }
@@ -68,7 +68,7 @@ const Home = () => {
         .home-subtitle {
           text-align: center;
           font-size: 1.1rem;
-          color: #64748B;
+          color: white;
           margin: 1.5rem auto 3rem;
           max-width: 720px;
         }
@@ -106,7 +106,7 @@ const Home = () => {
         .btn-secondary {
           background-color: transparent;
           border: 2px solid #38BDF8;
-          color: #38BDF8;
+          color: white;
         }
 
         .btn-secondary:hover {
@@ -130,6 +130,7 @@ const Home = () => {
           box-shadow: 0 8px 32px 0 rgba(56,189,248, 0.25);
           backdrop-filter: blur(8px);
           transition: transform 0.3s, box-shadow 0.3s;
+          color: white;
         }
 
         .feature-card:hover {
@@ -140,13 +141,13 @@ const Home = () => {
         .feature-title {
           font-family: 'Orbitron', sans-serif;
           font-size: 1.5rem;
-          color: #38BDF8;
+          color: white;
           margin-bottom: 0.5rem;
         }
 
         .feature-desc {
           font-size: 1rem;
-          color: #CBD5E1;
+          color: white;
         }
 
         .section-title {
@@ -154,7 +155,7 @@ const Home = () => {
           font-size: 2rem;
           margin: 3rem 0 2rem;
           font-family: 'Orbitron', sans-serif;
-          color: #60A5FA;
+          color: white;
           text-shadow: 0 0 10px rgba(96,165,250, 0.4);
         }
 
@@ -179,7 +180,7 @@ const Home = () => {
           border-radius: 16px;
           padding: 1.5rem;
           flex: 1;
-          color: #38BDF8;
+          color: white;
           backdrop-filter: blur(6px);
           box-shadow: 0 6px 28px rgba(59,130,246, 0.2);
           transition: transform 0.3s;
@@ -192,7 +193,7 @@ const Home = () => {
 
         .step-card strong {
           font-size: 1.25rem;
-          color: #38BDF8;
+          color: white;
         }
 
         .final-cta {
