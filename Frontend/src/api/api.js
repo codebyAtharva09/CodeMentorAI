@@ -1,14 +1,11 @@
 import axios from "axios";
 
-// ✅ Backend URL (update this if deploying)
-const BASE_URL = "http://localhost:8000"; // Ensure backend is running at this address
+const BASE_URL = "http://localhost:8000";
 
-// ✅ Simulated login (placeholder)
 export const loginUser = async (username, password) => {
   return username === "testuser" && password === "password123";
 };
 
-// ✅ Upload code file to analyzer endpoint
 export const uploadCodeFile = async (file) => {
   try {
     const formData = new FormData();
@@ -23,23 +20,29 @@ export const uploadCodeFile = async (file) => {
         },
       }
     );
-
     return response.data;
   } catch (error) {
-    console.error("❌ Upload error:", error);
+    console.error("Error uploading file:", error);
     throw error;
   }
 };
 
-// ✅ Fetch coaching feedback after analysis
 export const getCoachingReport = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/coach/generate`);
     return response.data;
   } catch (error) {
-    console.error("❌ Coaching fetch error:", error);
+    console.error("Error getting coaching report:", error);
     throw error;
   }
 };
 
-console.log("✅ api.js loaded and connected to:", BASE_URL);
+export const getUserProgress = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/analyzer/progress`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user progress:", error);
+    throw error;
+  }
+};

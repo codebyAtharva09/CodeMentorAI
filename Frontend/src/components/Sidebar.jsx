@@ -6,7 +6,7 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -51,8 +51,8 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
 
         .sidebar-toggle-wrapper {
           display: flex;
-          justify-content: ${collapsed ? "center" : "flex-end"};
-          width: ${collapsed ? "100%" : "auto"};
+          justify-content: flex-end;
+          margin-left: auto;
         }
 
         .sidebar-toggle-btn {
@@ -64,6 +64,10 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
           color: #38bdf8;
           cursor: pointer;
           transition: background-color 0.3s ease, transform 0.2s ease;
+          min-width: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .sidebar-toggle-btn:hover {
@@ -78,11 +82,10 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
           padding: 0 1rem;
         }
 
-        .sidebar-link,
-        .sidebar-icon-link {
+        .sidebar-link {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.75rem;
           color: #e2e8f0;
           font-weight: 600;
           text-decoration: none;
@@ -91,43 +94,27 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
           width: 100%;
           transition: all 0.3s ease;
           white-space: nowrap;
-          opacity: ${collapsed ? "0" : "1"};
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          border: none;
+          background: transparent;
+          cursor: pointer;
         }
 
-        .sidebar-icon-link {
-          justify-content: center;
-          font-size: 1.5rem;
-          color: #38bdf8;
-          opacity: 1;
-        }
-
-        .sidebar-link:hover,
-        .sidebar-icon-link:hover {
+        .sidebar-link:hover {
           color: #60a5fa;
           text-shadow: 0 0 6px #3b82f6;
+          background: rgba(59, 130, 246, 0.1);
         }
 
-        .sidebar-logout-wrapper {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          padding: 1rem 0;
+        .sidebar-link.logout-btn {
+          color: #38bdf8;
+          margin-top: auto;
         }
 
-        .sidebar-logout-button {
-          background: none;
-          border: none;
-          color: #f87171;
-          font-weight: 600;
-          font-size: 1.05rem;
-          cursor: pointer;
-          transition: color 0.3s ease, text-shadow 0.3s ease;
-          opacity: ${collapsed ? "0" : "1"};
-        }
-
-        .sidebar-logout-button:hover {
-          color: #ef4444;
-          text-shadow: 0 0 6px #ef4444;
+        .sidebar-link.logout-btn:hover {
+          color: #0ea5e9;
+          background: rgba(14, 165, 233, 0.1);
         }
 
         @media (max-width: 640px) {
@@ -149,37 +136,35 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
           </div>
 
           <div className="sidebar-nav-container">
-            <Link
-              to="/dashboard/upload"
-              className={collapsed ? "sidebar-icon-link" : "sidebar-link"}
-            >
-              📁 {!collapsed && "Upload"}
+            <Link to="/dashboard" className="sidebar-link">
+              <span className="icon">🏠</span>
+              {!collapsed && <span className="text">Dashboard</span>}
             </Link>
-            <Link
-              to="/dashboard/devscore"
-              className={collapsed ? "sidebar-icon-link" : "sidebar-link"}
-            >
-              📊 {!collapsed && "DevScore"}
+            <Link to="/dashboard/upload" className="sidebar-link">
+              <span className="icon">📤</span>
+              {!collapsed && <span className="text">Upload Code</span>}
             </Link>
-            <Link
-              to="/dashboard/analysis"
-              className={collapsed ? "sidebar-icon-link" : "sidebar-link"}
-            >
-              📑 {!collapsed && "Analysis"}
+            <Link to="/dashboard/devscore" className="sidebar-link">
+              <span className="icon">📊</span>
+              {!collapsed && <span className="text">DevScore</span>}
             </Link>
-            <Link
-              to="/dashboard/coaching"
-              className={collapsed ? "sidebar-icon-link" : "sidebar-link"}
-            >
-              🧠 {!collapsed && "Coaching"}
+            <Link to="/dashboard/analysis" className="sidebar-link">
+              <span className="icon">🔍</span>
+              {!collapsed && <span className="text">Analysis</span>}
             </Link>
+            <Link to="/dashboard/coaching" className="sidebar-link">
+              <span className="icon">👨‍🏫</span>
+              {!collapsed && <span className="text">Coaching</span>}
+            </Link>
+            <Link to="/dashboard/leaderboard" className="sidebar-link">
+              <span className="icon">🏆</span>
+              {!collapsed && <span className="text">Leaderboard</span>}
+            </Link>
+            <button onClick={handleLogout} className="sidebar-link logout-btn">
+              <span className="icon">🚪</span>
+              {!collapsed && <span className="text">Logout</span>}
+            </button>
           </div>
-        </div>
-
-        <div className="sidebar-logout-wrapper">
-          <button onClick={handleLogout} className="sidebar-logout-button">
-            🚪 {!collapsed && "Logout"}
-          </button>
         </div>
       </div>
     </>
