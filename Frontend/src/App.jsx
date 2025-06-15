@@ -22,7 +22,7 @@ const App = () => {
       <Route path="/register" element={<Register />} />
 
       {/* Protected Dashboard with Nested Routes */}
-      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
+      <Route path="/dashboard" element={<Dashboard />}>
         <Route index element={<div />} />
         <Route path="upload" element={<UploadPage />} />
         <Route path="devscore" element={<DevScorePage />} />
