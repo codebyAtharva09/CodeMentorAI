@@ -12,7 +12,7 @@ const Login = () => {
 
   useEffect(() => {
     localStorage.setItem("isLoggedIn", "true");
-    navigate("/dashboard");
+    navigate("/dashboard/upload");
   }, [navigate]);
 
   const handleLogin = async (e) => {
