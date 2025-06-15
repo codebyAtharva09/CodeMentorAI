@@ -7,7 +7,7 @@ app = FastAPI(title="CodeMentor AI API")
 
 # CORS middleware
 origins = [
-    "https://code-mentor-ai-nu.vercel.app", # Your Vercel frontend URL
+    "https://code-mentor-ai-iota.vercel.app", # Your Vercel frontend URL
     "http://localhost:5173", # For local development if you use Vite's default port
     "http://localhost:3000", # For local development if you use React's default port
     # Add any other origins your frontend might be deployed on
