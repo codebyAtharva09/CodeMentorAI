@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { FaGoogle, FaTwitter, FaGithub } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import { loginUser } from "../api/api";
+import { useEffect } from "react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", "true");
+    navigate("/dashboard");
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -198,49 +204,48 @@ const Login = () => {
         <div className="login-box">
           <h2 className="login-title">Sign In</h2>
           <form onSubmit={handleLogin}>
-            <label>Username</label>
-            <input
-              type="text"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            {/* <div className="mb-4">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
             <div className="forgot-link">
               <a href="#">Forgot Password?</a>
             </div>
             <button type="submit" className="login-button">
-              Sign in
+              Sign In
             </button>
+            <div className="divider">
+              <span className="divider-line"></span>
+              <span className="divider-text">OR</span>
+              <span className="divider-line"></span>
+            </div>
+            <div className="social-icons">
+              <a href="#"><FaGoogle /></a>
+              <a href="#"><FaTwitter /></a>
+              <a href="#"><FaGithub /></a>
+            </div>
+            <p className="signup-text">
+              Don't have an account? <a href="/register">Sign Up</a>
+            </p> */}
           </form>
-
-          <div className="divider">
-            <div className="divider-line" />
-            <span className="divider-text">or sign in with</span>
-            <div className="divider-line" />
-          </div>
-
-          <div className="social-icons">
-            <a href="#">
-              <FaGoogle />
-            </a>
-            <a href="#">
-              <FaTwitter />
-            </a>
-            <a href="#">
-              <FaGithub />
-            </a>
-          </div>
-
-          <p className="signup-text">
-            Don't have an account? <a href="/register">Sign up</a>
-          </p>
         </div>
       </div>
     </>
